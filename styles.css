@@ -68,5 +68,30 @@ body {
 }
 
 .info-container {
-    
+    background-color: #f5efeb;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 700px;
+    color: #2f4156;
+}
+
+.info-container label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: #2f4156;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
 }
