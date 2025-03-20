@@ -249,11 +249,11 @@ body {
         transition: all 0.5s ease;
         height: 50vh;
         z-index: -1;
-        background: #C8D9e6;
+        background: #F5EFEB;
     }
 
     .navbar__menu.active{
-        background: #C8D9e6;
+        background: #F5EFEB;
         top: 100%;
         opacity: 1;
         transition: all 0.5s ease;
@@ -271,7 +271,7 @@ body {
         height: 3px;
         margin: 5px auto;
         transition: all 0.3s ease-in-out;
-        background: #fff;
+        background: #567c8d;
     }
 
     .navbar__item {
