@@ -70,3 +70,19 @@ body {
 .info-container {
     
 }
+
+.padding-l {
+    padding: 1.5rem;
+}
+
+.border-hex {
+    border-color: #F5EFEB;
+}
+
+.background-beige {
+    background-color: #F5EFEB;
+}
+
+.background-hex {
+    background-color: #c8d9e6;
+}
