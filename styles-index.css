@@ -361,7 +361,7 @@
 
 .services h1{
     background-color: #292c89;
-    background-image: linear-gradient(to right, #4286a6 0%, #487a9e 0%, #2c5186 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    background-image: linear-gradient(to right, #b1cedc 0%, #487a9e 0%, #4168a0 21%, #24476d 52%, #071534 78%, #01070d 100%);
     background-size: 100%;
     margin-bottom: 5rem;
     font-size: 2.5rem;
@@ -382,8 +382,8 @@
     height: 525px;
     width: 400px;
     border-radius: 12px;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,
-    rgba(17,17,17,0.6) 100%), url('/images/pic3.jpg');
+    background-image: linear-gradient(to bottom, rgba(51, 142, 185, 0) 0%,
+    rgba(47, 110, 149, 0.6) 100%), url('/images/pic3.jpg');
     background-size: cover;
     position: relative;
     color: #fff;
@@ -412,7 +412,7 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: #f77062;
+    background: #2f4156;
     position: absolute;
     top: 440px;
     left: 30px;
@@ -455,7 +455,7 @@
 /* Footer section CSS */
 
 .footer__container{
-    background: #141414;
+    background: #2f4156;
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
