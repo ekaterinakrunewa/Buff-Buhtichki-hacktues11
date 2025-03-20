@@ -6,6 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #c8d9e6;
+    padding-top: 100px;
 }
 
 .login-container {
@@ -322,5 +323,4 @@ body {
         transform: translateY(-8px) rotate(-45deg);
      }
 }
-
 
