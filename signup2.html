@@ -3,49 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal info Page</title>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css"
+/>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+/>
 </head>
-<body>
-    <div class="info-container">
-        <h2>Personal Info</h2>
-        <form>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="birth">Date of Birth:</label>
-                    <input type="date" id="birth" name="birth" required>
-                </div>
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender" required>
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="number">Phone number:</label>
-                    <input type="tel" id="number" name="number" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
-            </div>
-            <button onclick="location.href='signup2.html'" type="submit" class="login-button">Continue</button>
-        </form>
-    </div>
+<body class="background-hex">
+
+ 
+<form class="rounded-md border border-hex padding-l shadow-2xl background-beige" method="POST" action="/signup">
+    <div class="grid gap-6 mb-6 md:grid-cols-2">    
+
+        <select
+        class="form-control"
+        name="choices-multiple-groups"
+        id="choices-multiple-groups"
+        placeholder="This is a placeholder"
+        multiple
+      >
+        <option value="">Choose sports</option>
+        <optgroup label="Ball sports">
+          <option value="Tennis">Tennis</option>
+          <option value="Football">Football</option>
+          <option value="Volleyball">Volleyball</option>
+          <option value="Basketball">Basketball</option>
+        </optgroup>
+        <optgroup label="Water sports">
+          <option value="Swimming">Swimming</option>
+          <option value="Lyon"></option>
+          <option value="Marseille">Marseille</option>
+        </optgroup>
+        <optgroup label="Walking" disabled>
+          <option value="Running">Running</option>
+          <option value="Jogging">Jogging</option>
+          <option value="Walking">Walking</option>
+        </optgroup>
+        <optgroup label="Cycling">
+          <option value="New York">New York</option>
+          <option value="Michigan">Michigan</option>
+        </optgroup>
+        <optgroup label="SP">
+          <option value="Madrid">Madrid</option>
+          <option value="Barcelona">Barcelona</option>
+          <option value="Malaga">Malaga</option>
+        </optgroup>
+        <optgroup label="CA">
+          <option value="Montreal">Montreal</option>
+          <option value="Toronto">Toronto</option>
+          <option value="Vancouver">Vancouver</option>
+        </optgroup>
+      </select>
+
+
+
+
+      
+        
+      <select
+      class="form-control"
+      name="choices-multiple-groups"
+      id="food"
+      placeholder="This is a placeholder"
+      multiple
+    >
+      <option value="">Choose a city</option>
+      <optgroup label="Meats">
+        <option value="Cicken">Cicken</option>
+        <option value="Pork">Pork</option>
+        <option value="Beef">Beef</option>
+      </optgroup>
+      <optgroup label="Vegetables">
+        <option value="Greens">Greens</option>
+        <option value="Potatoes">Potatoes</option>
+        <option value="Pepers">Pepers</option>
+      </optgroup>
+      <optgroup label="Fruits">
+        <option value="Bananas">Bananas</option>
+        <option value="Berries">Berries</option>
+        <option value="Apples">Apples</option>
+      </optgroup>
+      <optgroup label="Dairy">
+        <option value="Milk">Milk</option>
+        <option value="Yogurt">Yogurt</option>
+        <option value="Cheese">Cheese</option>
+      </optgroup>
+      <optgroup label="Grains">
+        <option value="White Bread">White Bread</option>
+        <option value="Whole Grain"></option>
+        <option value="Malaga">Malaga</option>
+      </optgroup>
+      <optgroup label="CA">
+        <option value="Montreal">Montreal</option>
+        <option value="Toronto">Toronto</option>
+        <option value="Vancouver">Vancouver</option>
+      </optgroup>
+    </select>
+
+        
+       
+    <button class="submitbutton" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <script>
+        var multipleDefault = new Choices(
+          document.getElementById('choices-multiple-groups'),
+          { allowHTML: true }
+        );
+
+        var multipleDefault = new Choices(
+          document.getElementById('food'),
+          { allowHTML: true }
+        );
+    </script>
+
 </body>
 </html>

@@ -92,3 +92,32 @@ body {
 .background-hex {
     background-color: #c8d9e6;
 }
+
+.submitbutton {
+    background-color: #567c8d;
+    color: #f5efeb;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.submitbutton:hover {
+    background-color: #2f4156;
+}
+
+.foods {
+    background-color: #f5efeb; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 700px;
+    text-decoration: none;
+}
+
+body {
+    color: #2f4156 !important;
+}
