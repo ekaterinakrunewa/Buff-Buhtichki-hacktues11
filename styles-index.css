@@ -28,7 +28,7 @@
     padding: 0 50px;
 }
 
-#navbar__logo{
+#navbar__logo {
     background-color: #567c8d;
     background-image: linear-gradient(to top, #31729e 0%, #1d1758 100%);
     background-size: 100%;
@@ -41,6 +41,13 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#navbar__logo:hover {
+    background-image: linear-gradient(to top, #1d1758 0%, #31729e 100%); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slightly enlarge the logo */
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .fa-gem{
