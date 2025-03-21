@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Напиши Ревю</title>
+  <title>Write Review</title>
   <link rel="stylesheet" href="reviewpage.css">
+  <link rel="stylesheet" href="styles-index.css">
 </head>
 <body>
-  <div class="header">
-    <h1>Напиши Ревю</h1>
-  </div>
+  <nav class="navbar">
+    <div class="navbar__container">
+        <a href="/index.html" id="navbar__logo">TimeLink</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="/find.html" class="navbar__links">Offer/Get Help</a>
+            </li>
+            <li class="navbar__btn">
+                <a href="/signup.html" class="button">Sign up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
   <div class="container">
     <form id="reviewForm">
       <label for="name">Вашето име:</label><br>
@@ -20,9 +35,6 @@
     </form>
   </div>
   <footer>
-    <div class="advertisement">
-      <p>Бърза и безплатна доставка за българия!</p>
-    </div>
   </footer>
   <script src="write-review.js"></script>
 </body>

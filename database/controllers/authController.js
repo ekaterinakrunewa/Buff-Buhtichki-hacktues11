@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
 const signup = async (req, res) => {
@@ -45,7 +46,6 @@ const login = async (req, res) => {
         }
 
         const user = rows[0];
-        console.log(user);
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             return res.status(400).json({ error: 'Invalid email or password.' });
@@ -53,7 +53,6 @@ const login = async (req, res) => {
 
         const token = jwt.sign({ id: user.id, email: user.email }, 'your_secret_key', { expiresIn: '1h' });
 
-        
         res.cookie('authToken', token, {
             httpOnly: true, 
             secure: false, 
@@ -75,4 +74,14 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { signup, login };
+const logout = (req, res) => {
+    req.session.destroy(() => {
+        res.status(200).json({ message: 'Logged out successfully' });
+    });
+
+    res.clearCookie('authToken');
+    res.status(200).json({ message: 'Logged out successfully' });
+};
+
+module.exports = { signup, login, logout };  
+
