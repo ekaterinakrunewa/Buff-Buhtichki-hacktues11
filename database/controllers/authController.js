@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const db = require('../config/db'); 
+const db = require('../config/db');
 
 const signup = async (req, res) => {
     const { first_name, last_name, phone, email, password } = req.body;
@@ -9,21 +9,22 @@ const signup = async (req, res) => {
     }
 
     try {
-        const [existingUser] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
-        if (existingUser.length > 0) {
-            return res.status(400).json({ error: 'User already exists.' });
+        const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (rows.length > 0) {
+            return res.status(400).json({ error: 'User already exists with this email.' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        await db.query(
+        
+        const [result] = await db.query(
             'INSERT INTO users (first_name, last_name, phone, email, password) VALUES (?, ?, ?, ?, ?)',
             [first_name, last_name, phone, email, hashedPassword]
         );
 
-        //biscuits
-
-        res.status(201).json({ message: 'Signup successful!' });
+        res.status(201).json({ 
+            message: 'Signup successful!',
+            userId: result.insertId 
+        });
     } catch (error) {
         console.error('Error during signup:', error);
         res.status(500).json({ error: 'An error occurred during signup.' });
@@ -38,17 +39,27 @@ const login = async (req, res) => {
     }
 
     try {
-        const [user] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
-        if (user.length === 0) {
-            return res.status(400).json({ error: 'User not found.' });
+        const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (rows.length === 0) {
+            return res.status(400).json({ error: 'Invalid email or password.' });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user[0].password);
+        const user = rows[0];
+        console.log(user);
+        const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ error: 'Invalid password.' });
+            return res.status(400).json({ error: 'Invalid email or password.' });
         }
 
-        res.status(200).json({ message: 'Login successful!' });
+        res.status(200).json({ 
+            message: 'Login successful!',
+            user: {
+                id: user.id,
+                firstName: user.first_name,
+                lastName: user.last_name,
+                email: user.email
+            }
+        });
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'An error occurred during login.' });
