@@ -69,7 +69,13 @@
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
 
+            if (data.password !== data.confirm_password) {
+                alert('Passwords do not match.');
+                return;
+            }
+
             try {
+                
                 const response = await fetch('http://localhost:5000/api/auth/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -77,11 +83,10 @@
                 });
 
                 const result = await response.json();
-                console.log(result); 
 
                 if (response.ok) {
-                    alert('Signup successful!');
-                    window.location.href = '/login.html';
+                    alert('Signup successful! Redirecting to login page...');
+                    window.location.href = '/login.html'; 
                 } else {
                     alert(result.error || 'Signup failed. Please try again.');
                 }
