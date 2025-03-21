@@ -10,84 +10,89 @@ const clearFiltersBtn = document.querySelector('#clearFilters');
 let allOffers = [];
 
 function loadOffers() {
-    const storedOffers = JSON.parse(localStorage.getItem('helpRequests') || '[]');
-    allOffers = storedOffers.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const storedOffers = localStorage.getItem('helpRequests');
+    allOffers = storedOffers ? JSON.parse(storedOffers) : [];
+    updateAreaFilter();
     applyFilters();
-}
-
-function formatDate(dateStr) {
-    return new Date(dateStr).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-    });
-}
-
-function formatTime(timeStr) {
-    return timeStr.slice(0, 5);
 }
 
 function createOfferCard(offer) {
     const card = offerTemplate.content.cloneNode(true);
+    
     const typeIcon = card.querySelector('.offer__type i');
     const typeText = card.querySelector('.offer__type span');
+    const area = card.querySelector('.offer__area');
     
     if (offer.help_type === 'offer') {
         typeIcon.classList.add('fa-hand-holding-heart');
         typeText.textContent = 'Offering Help';
+        area.textContent = offer.area_type;
     } else {
         typeIcon.classList.add('fa-hands-helping');
         typeText.textContent = 'Requesting Help';
+        area.textContent = offer.help_type;
     }
-
-    const area = card.querySelector('.offer__area');
-    area.textContent = offer.area_type || offer.help_type;
-
+    
     const dateRange = card.querySelector('.date__range span');
-    const startDate = offer.help_type === 'offer' ? offer.date_start : offer.need_date_start;
-    const endDate = offer.help_type === 'offer' ? offer.date_end : offer.need_date_end;
-    dateRange.textContent = `${formatDate(startDate)} - ${formatDate(endDate)}`;
-
     const timeRange = card.querySelector('.time__range span');
-    const startTime = offer.help_type === 'offer' ? offer.time_from : offer.need_time_from;
-    const endTime = offer.help_type === 'offer' ? offer.time_to : offer.need_time_to;
-    timeRange.textContent = `${formatTime(startTime)} - ${formatTime(endTime)}`;
-
     const credits = card.querySelector('.offer__credits span');
-    const creditAmount = offer.help_type === 'offer' ? offer.credit_amount : offer.credit_budget;
-    credits.textContent = `${creditAmount} credits/hour`;
-
     const description = card.querySelector('.offer__description');
+    
+    if (offer.help_type === 'offer') {
+        dateRange.textContent = `${offer.date_start} - ${offer.date_end}`;
+        timeRange.textContent = `${offer.time_from} - ${offer.time_to}`;
+        credits.textContent = `${offer.credit_amount} credits/hour`;
+    } else {
+        dateRange.textContent = `${offer.need_date_start} - ${offer.need_date_end}`;
+        timeRange.textContent = `${offer.need_time_from} - ${offer.need_time_to}`;
+        credits.textContent = `${offer.credit_budget} credits/hour`;
+    }
+    
     description.textContent = offer.description;
-
-    const contactBtn = card.querySelector('.contact__btn');
-    contactBtn.addEventListener('click', () => handleContact(offer));
-
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete__btn';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => deleteOffer(offer.id);
+    card.querySelector('.offer__card').appendChild(deleteBtn);
+    
     return card;
 }
 
-function handleContact(offer) {
-    alert(`Contact functionality will be implemented here for offer ID: ${offer.id}`);
+function deleteOffer(id) {
+    if (confirm('Are you sure you want to delete this offer?')) {
+        allOffers = allOffers.filter(offer => offer.id !== id);
+        localStorage.setItem('helpRequests', JSON.stringify(allOffers));
+        loadOffers();
+    }
 }
 
 function applyFilters() {
-    const typeValue = typeFilter.value;
-    const areaValue = areaFilter.value;
-    const maxCredits = parseInt(creditFilter.value);
+    const selectedType = typeFilter.value;
+    const selectedArea = areaFilter.value;
+    const maxCredit = parseInt(creditFilter.value);
 
-    const filteredOffers = allOffers.filter(offer => {
-        const matchesType = typeValue === 'all' || offer.help_type === typeValue;
-        const matchesArea = areaValue === 'all' || 
-                          (offer.area_type === areaValue || offer.help_type === areaValue);
-        const credits = parseInt(offer.help_type === 'offer' ? 
-                               offer.credit_amount : 
-                               offer.credit_budget);
-        const matchesCredits = credits <= maxCredits;
-
-        return matchesType && matchesArea && matchesCredits;
+    const filtered = allOffers.filter(offer => {
+        const isOffer = offer.help_type === 'offer';
+        
+        if (selectedType === 'offer' && !isOffer) return false;
+        if (selectedType === 'receive' && isOffer) return false;
+        
+        if (selectedArea !== 'all') {
+            if (isOffer) {
+                if (offer.area_type !== selectedArea) return false;
+            } else {
+                if (offer.help_type !== selectedArea) return false;
+            }
+        }
+        
+        const creditValue = isOffer ? parseInt(offer.credit_amount) : parseInt(offer.credit_budget);
+        if (creditValue > maxCredit) return false;
+        
+        return true;
     });
 
-    displayOffers(filteredOffers);
+    displayOffers(filtered);
 }
 
 function displayOffers(offers) {
@@ -99,59 +104,66 @@ function displayOffers(offers) {
     } else {
         noResults.style.display = 'none';
         offersGrid.style.display = 'grid';
-        offers.forEach(offer => {
-            offersGrid.appendChild(createOfferCard(offer));
-        });
+        offers.forEach(offer => offersGrid.appendChild(createOfferCard(offer)));
     }
 }
 
-function resetFilters() {
+function updateAreaFilter() {
+    const areas = new Set();
+    
+    allOffers.forEach(offer => {
+        if (offer.help_type === 'offer') {
+            if (offer.area_type) areas.add(offer.area_type);
+        } else {
+            if (offer.help_type) areas.add(offer.help_type);
+        }
+    });
+    
+    areaFilter.innerHTML = '<option value="all">All Areas</option>';
+    Array.from(areas).sort().forEach(area => {
+        areaFilter.innerHTML += `<option value="${area}">${area}</option>`;
+    });
+}
+
+function clearAllOffers() {
+    if (confirm('Are you sure you want to clear all offers?')) {
+        localStorage.removeItem('helpRequests');
+        allOffers = [];
+        applyFilters();
+        updateAreaFilter();
+    }
+}
+
+creditFilter.addEventListener('input', () => {
+    creditValue.textContent = creditFilter.value;
+    applyFilters();
+});
+
+typeFilter.addEventListener('change', applyFilters);
+areaFilter.addEventListener('change', applyFilters);
+
+clearFiltersBtn.addEventListener('click', () => {
     typeFilter.value = 'all';
     areaFilter.value = 'all';
     creditFilter.value = 500;
     creditValue.textContent = '500';
     applyFilters();
-}
-
-function populateAreaFilter() {
-    const areas = new Set(allOffers.map(offer => offer.area_type || offer.help_type));
-    const fragment = document.createDocumentFragment();
-    
-    fragment.appendChild(new Option('All Areas', 'all'));
-    areas.forEach(area => {
-        if (area) {
-            fragment.appendChild(new Option(area, area));
-        }
-    });
-    
-    areaFilter.innerHTML = '';
-    areaFilter.appendChild(fragment);
-}
-
-typeFilter.addEventListener('change', applyFilters);
-areaFilter.addEventListener('change', applyFilters);
-creditFilter.addEventListener('input', () => {
-    creditValue.textContent = creditFilter.value;
-    applyFilters();
-});
-clearFiltersBtn.addEventListener('click', resetFilters);
-
-const menu = document.querySelector('#mobile-menu');
-const menuLinks = document.querySelector('.navbar__menu');
-
-menu.addEventListener('click', function() {
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
 });
 
 window.addEventListener('DOMContentLoaded', () => {
     loadOffers();
-    populateAreaFilter();
+    
+    const clearAllBtn = document.createElement('button');
+    clearAllBtn.className = 'clear__all__btn';
+    clearAllBtn.textContent = 'Clear All Offers';
+    clearAllBtn.onclick = clearAllOffers;
+    clearFiltersBtn.parentNode.appendChild(clearAllBtn);
 });
 
-window.addEventListener('storage', (e) => {
-    if (e.key === 'helpRequests') {
-        loadOffers();
-        populateAreaFilter();
-    }
+const menu = document.querySelector('#mobile-menu');
+const menuLinks = document.querySelector('.navbar__menu');
+
+menu.addEventListener('click', () => {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
 });

@@ -428,3 +428,33 @@
         padding: 1rem;
     }
 }
+
+.delete__btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.delete__btn:hover {
+    background: #cc0000;
+}
+
+.clear__all__btn {
+    margin-left: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear__all__btn:hover {
+    background: #cc0000;
+}
