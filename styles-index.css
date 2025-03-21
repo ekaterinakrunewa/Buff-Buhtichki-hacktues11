@@ -428,7 +428,7 @@
 }
 
 .services__card:hover{
-    transform: scale(1.075);
+    transform: scale(1.050);
     transition: all 0.2s ease-in;
     cursor: pointer;
 }
@@ -590,4 +590,8 @@
         padding: 10px;
         width: 100%;
     }
+}
+
+#services__header {
+    font-size: 2rem;
 }
