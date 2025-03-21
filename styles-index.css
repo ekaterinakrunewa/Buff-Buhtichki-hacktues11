@@ -615,3 +615,7 @@
 #services__header {
     font-size: 2rem;
 }
+
+.main__img--container{
+    margin-left: 100px;
+}
