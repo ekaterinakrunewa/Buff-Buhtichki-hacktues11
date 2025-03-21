@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
   }
+
   
   .header {
     background-color: #88d0ee;
@@ -73,7 +74,7 @@ body {
     margin: 20px auto 20px;
     padding: 15px 25px;
     font-size: 18px;
-    background-color: #88d0ee;
+    background-color: #567c8d;
     color: white;
     border: none;
     border-radius: 8px;
@@ -82,7 +83,7 @@ body {
   }
   
   #RRB:hover {
-    background-color: #0056b3;
+    background-color: #2f4156;
   }
   
   .review {
@@ -95,5 +96,5 @@ body {
   
   .review h2 {
     margin-top: 0;
-    color: #89CFF0;
+    color: #c8d9e6;
   }
