@@ -1,12 +1,21 @@
+* {
+    font-family: sans-serif;
+}
+
 .main--content {
     position: relative;
-    background: #C8D9e6;
+    background-color: #C8D9e6;
     width: 98%;
     padding: 1rem;
 }
 
 .header--title {
     font-size: large;
+}
+
+#prim {
+    position: relative;
+    top: 20px;
 }
 
 .header--wrapper img {
@@ -36,21 +45,6 @@
     gap: 1rem;
 }
 
-.search--box {
-    background-color: #C8D9e6;
-    border-radius: 15px;
-    color: rgba(113, 99, 186, 255);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 12px;
-}
-
-.search--box input {
-    background: transparent;
-    padding: 10px;
-}
-
 .card--container {
     background: #f5efeb;
     border-radius: 10px;
@@ -73,7 +67,19 @@
 }
 
 .payment--card {
-    background: rgb(255, 173, 173);
+    background: rgb(255, 144, 144);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+}
+
+.payment--card2 {
+    background: rgb(191, 255, 182);
     border-radius: 10px;
     padding: 1.2rem;
     width: 290px;
@@ -86,10 +92,88 @@
 
 .value {
     font-size: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
-.title img {
-    width: 50px;
-    height: 50px;
-    
+#credit {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 86px;
+    top: -17px;
 }
+
+.title {
+    font-size: 25px;
+    font-weight: 200;
+    position: relative;
+    top:-40px;
+}
+
+.payment--card:hover {
+    transform: translateY(-5px);
+}
+
+.payment--card2:hover {
+    transform: translateY(-5px);
+}
+
+#credit2 {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 69px;
+    top: -16px;
+}
+
+.tabular--wrapper{
+    background: #f5efeb;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.table-container{
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #31729e;
+    color: #fff;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+}
+
+tbody {
+    background-color: #f5efeb;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background: #fff;
+}
+
+tfoot{
+    background-color: #f5efeb;
+    font-weight: bold;
+    color: #fff;
+}
+
+tfoot td {
+    padding: 15px;
+}
+
