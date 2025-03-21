@@ -2,7 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
 .navbar {
@@ -41,6 +42,13 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#navbar__logo:hover {
+    background-image: linear-gradient(to top, #1d1758 0%, #31729e 100%); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slightly enlarge the logo */
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .navbar__menu {
@@ -185,19 +193,24 @@
     background: #C8D9E6;
 }
 
-.clear__btn {
-    margin-top: 1rem;
-    padding: 0.8rem 1.5rem;
-    background: #2f4156;
-    color: white;
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    outline: none;
+    border-radius: 4px;
+    background: #567c8d;
+    color: #fff;
 }
 
-.clear__btn:hover {
-    background: #3d5269;
+.button:hover{
+    background: #2f4156;
+    transition: all 0.3s ease;
 }
 
 .offers__grid {
