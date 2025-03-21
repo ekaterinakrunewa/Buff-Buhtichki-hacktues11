@@ -95,9 +95,29 @@
                     <div class="offer__options">
                         <h2>Help Details</h2>
                         <div class="credit__range">
-                            <label>Credits Offered/Needed</label>
-                            <input type="range" min="10" max="1000" step="10" id="credit_amount">
-                            <div class="range__value">500 credits</div>
+                            <label>Payment per hour (credits)</label>
+                            <input type="range" min="50" max="500" step="10" id="credit_amount">
+                            <div class="range__value">250 credits/hour</div>
+                        </div>
+                        <div class="date__selection">
+                            <div class="date__input">
+                                <label>Start Date</label>
+                                <input type="date" id="date_start">
+                            </div>
+                            <div class="date__input">
+                                <label>End Date</label>
+                                <input type="date" id="date_end">
+                            </div>
+                        </div>
+                        <div class="time__selection">
+                            <div class="time__input">
+                                <label>Available From</label>
+                                <input type="time" id="time_from">
+                            </div>
+                            <div class="time__input">
+                                <label>Available Until</label>
+                                <input type="time" id="time_to">
+                            </div>
                         </div>
                         <div class="area__selection">
                             <select name="area" id="area_type" class="styled__select">
@@ -112,15 +132,46 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="need__options">
+                        <h2>Help Request Details</h2>
+                        <div class="credit__range">
+                            <label>Budget per hour (credits)</label>
+                            <input type="range" min="50" max="500" step="10" id="credit_budget">
+                            <div class="range__value">250 credits/hour</div>
+                        </div>
+                        <div class="date__selection">
+                            <div class="date__input">
+                                <label>Need Help From</label>
+                                <input type="date" id="need_date_start">
+                            </div>
+                            <div class="date__input">
+                                <label>Until</label>
+                                <input type="date" id="need_date_end">
+                            </div>
+                        </div>
                         <div class="time__selection">
                             <div class="time__input">
-                                <label>Available From</label>
-                                <input type="time" id="time_from">
+                                <label>Preferred Time From</label>
+                                <input type="time" id="need_time_from">
                             </div>
                             <div class="time__input">
-                                <label>Available Until</label>
-                                <input type="time" id="time_to">
+                                <label>Until</label>
+                                <input type="time" id="need_time_to">
                             </div>
+                        </div>
+                        <div class="area__selection">
+                            <select name="help_needed" id="help_type" class="styled__select">
+                                <option value="">Type of Help Needed</option>
+                                <option value="housework">Housework</option>
+                                <option value="gardening">Gardening</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="transport">Transport</option>
+                                <option value="companionship">Companionship</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="education">Education</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form__navigation">
@@ -130,31 +181,18 @@
                 </div>
 
                 <div class="form__step" id="step3">
-                    <h2>Additional Details</h2>
+                    <h2>Additional Information</h2>
                     <div class="description__container">
                         <textarea 
                             name="description" 
                             id="description" 
                             maxlength="600" 
-                            placeholder="Describe the help you're offering or requesting (max 600 characters)"></textarea>
+                            placeholder="Please provide additional details about your request or offer"></textarea>
                         <div class="char__count">0/600</div>
                     </div>
-
-                    <div class="urgency__level">
-                        <h3>Urgency Level</h3>
-                        <div class="urgency__options">
-                            <input type="radio" name="urgency" id="normal" value="normal">
-                            <label for="normal">Normal</label>
-                            <input type="radio" name="urgency" id="urgent" value="urgent">
-                            <label for="urgent">Urgent</label>
-                            <input type="radio" name="urgency" id="critical" value="critical">
-                            <label for="critical">Critical</label>
-                        </div>
-                    </div>
-
                     <div class="form__navigation">
                         <button type="button" class="prev__btn">Back</button>
-                        <button type="submit" class="submit__btn">Submit Request</button>
+                        <button type="submit" class="submit__btn">Submit</button>
                     </div>
                 </div>
             </form>
