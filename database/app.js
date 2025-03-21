@@ -8,17 +8,23 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Fixed CORS Configuration - Allow all origins during development
 app.use(cors({
-    origin: 'http://localhost:5000', 
-    credentials: true,
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 
-app.use(express.json()); 
-app.use(cookieParser()); 
-app.use(express.static(path.join(__dirname, 'static'))); 
+// Middleware
+app.use(express.json()); // Parse JSON request bodies
+app.use(cookieParser()); // Parse cookies
+app.use(express.static(path.join(__dirname, 'static'))); // Serve static files
 
+// Routes
 app.use('/api/auth', authRoutes);
 
+// Database Connection
 const db = require('./config/db');
 db.getConnection()
     .then(connection => {
@@ -29,7 +35,7 @@ db.getConnection()
         console.error('Database connection failed:', err);
     });
 
-
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

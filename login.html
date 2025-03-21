@@ -52,14 +52,18 @@
             const data = Object.fromEntries(formData);
 
             try {
-                
-                const response = await fetch('http://localhost:5000/api/auth/login', {
+                // Use a relative URL instead of absolute URL
+                const response = await fetch('/api/auth/login', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     credentials: 'include',
                     body: JSON.stringify(data),
                 });
 
+                console.log('Response status:', response.status);
                 const result = await response.json();
 
                 if (response.ok) {
@@ -69,8 +73,8 @@
                     alert(result.error || 'Login failed. Please check your credentials and try again.');
                 }
             } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                console.error('Detailed error:', error);
+                alert('An error occurred. Please check the console for details.');
             }
         });
     </script>
