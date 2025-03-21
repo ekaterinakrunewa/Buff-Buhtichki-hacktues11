@@ -173,7 +173,7 @@ body {
 }
 
 .navbar__links {
-    color: #567c8d;
+    color: #567c8d !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,7 +184,7 @@ body {
 }
 
 .navbar__links:hover {
-    color: #2f4156; /* Darker blue on hover */
+    color: #2f4156 !important; /* Darker blue on hover */
 }
 
 .navbar__btn {
