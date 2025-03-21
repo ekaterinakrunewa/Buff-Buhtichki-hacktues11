@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Write Review</title>
-  <link rel="stylesheet" href="reviewpage.css">
-  <link rel="stylesheet" href="styles-index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeLink - Write Review</title>
+    <link rel="stylesheet" href="styleswritereview.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <nav class="navbar">
@@ -25,17 +26,57 @@
         </ul>
     </div>
 </nav>
-  <div class="container">
-    <form id="reviewForm">
-      <label for="name">Вашето име:</label><br>
-      <input type="text" id="name" name="name" required><br><br>
-      <label for="review">Вашето ревю:</label><br>
-      <textarea id="review" name="review" rows="4" cols="50" required></textarea><br><br>
-      <button type="submit">Изпрати</button>
-    </form>
-  </div>
-  <footer>
-  </footer>
-  <script src="write-review.js"></script>
+
+    <div class="review__container">
+        <div class="review__header">
+            <h1>Write a Review</h1>
+            <p>Share your experience with the community</p>
+        </div>
+
+        <form id="review-form" class="review__form">
+            <div class="form__group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form__group">
+                <label>Rating</label>
+                <div class="star__rating">
+                    <i class="far fa-star" data-rating="1"></i>
+                    <i class="far fa-star" data-rating="2"></i>
+                    <i class="far fa-star" data-rating="3"></i>
+                    <i class="far fa-star" data-rating="4"></i>
+                    <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <input type="hidden" id="rating" name="rating" required>
+            </div>
+
+            <div class="form__group">
+                <label for="type">Review Type</label>
+                <select id="type" name="type" required>
+                    <option value="">Select type</option>
+                    <option value="Helper">Helper Review</option>
+                    <option value="Receiver">Receiver Review</option>
+                </select>
+            </div>
+
+            <div class="form__group">
+                <label for="review">Your Review</label>
+                <textarea id="review" name="review" rows="5" required></textarea>
+                <div class="char__count">0/500</div>
+            </div>
+
+            <button type="submit" class="submit__btn">Submit Review</button>
+        </form>
+
+        <div id="success-message" class="success__message" style="display: none;">
+            <i class="fas fa-check-circle"></i>
+            <h2>Thank you for your review!</h2>
+            <p>Your feedback has been submitted successfully.</p>
+            <a href="reviews.html" class="back__btn">Back to Reviews</a>
+        </div>
+    </div>
+
+    <script src="write-review.js"></script>
 </body>
 </html>

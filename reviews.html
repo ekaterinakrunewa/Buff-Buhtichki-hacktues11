@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeLink - Reviews</title>
+    <link rel="stylesheet" href="stylesreviews.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/index.html" id="navbar__logo">TimeLink</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/find.html" class="navbar__links">Offer/Get Help</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/signup.html" class="button">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="reviews__container">
+        <div class="reviews__header">
+            <h1>Community Reviews</h1>
+            <p>See what others are saying about their experiences</p>
+            <a href="write-review.html" class="write__review__btn">Write a Review</a>
+        </div>
+
+        <div class="reviews__filters">
+            <select id="filter-type" class="filter__select">
+                <option value="all">All Reviews</option>
+                <option value="helper">Helper Reviews</option>
+                <option value="receiver">Receiver Reviews</option>
+            </select>
+            <select id="filter-rating" class="filter__select">
+                <option value="all">All Ratings</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+            </select>
+        </div>
+
+        <div class="reviews__list" id="reviews-list">
+            
+        </div>
+
+        <div class="reviews__empty" id="no-reviews" style="display: none;">
+            <p>No reviews found.</p>
+            <a href="write-review.html" class="write__review__btn">Be the first to write a review</a>
+        </div>
+    </div>
+
+    <script src="appreviews.js"></script>
+</body>
+</html>

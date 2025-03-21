@@ -364,24 +364,36 @@
 }
 
 /* Services section CSS */
-.services{
+.services {
     background: #f5efeb;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: calc(60vh + 130px);
 }
 
-.services h1{
+.services__info {
+    text-align: center;
+    max-width: 800px;
+    margin: 4rem auto;
+}
+
+.services__info h1 {
     background-color: #292c89;
     background-image: linear-gradient(to right, #b1cedc 0%, #487a9e 0%, #4168a0 21%, #24476d 52%, #071534 78%, #01070d 100%);
     background-size: 100%;
-    margin-bottom: 5rem;
     font-size: 2.5rem;
+    margin-bottom: 1.5rem;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+}
+
+.services__info p {
+    font-size: 1.2rem;
+    color: #2f4156;
+    line-height: 1.6;
 }
 
 .services__container{
@@ -461,11 +473,15 @@
         height: 1600px;
     }
 
-    .services h1 {
+    .services__info h1 {
         font-size: 2rem;
         margin-top: 12rem;
     }
-
+    
+    .services__info p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -473,7 +489,7 @@
         height: 1400px;
     }
 
-    .services h1{
+    .services__info h1 {
         font-size: 1.5rem;
     }
 
@@ -635,12 +651,13 @@
 
 
 
-.review__comment{
+.review__comment {
     background: #f5efeb;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 15vh;
+    margin-top: -10vh;
 }
 
 .review__comment h1{
@@ -693,6 +710,64 @@
 }
 
 #review__btn:hover:after {
+    width: 100%;
+}
+
+.services__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.services__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 200px;
+}
+
+.services__btn a {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #fe5196 0%, #c8d9e6 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s ease;
+    outline: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.services__btn a:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-image: linear-gradient(to top, #2f4156 0%, #567c8d 100%);
+    transition: all 0.35s ease;
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.services__btn a:hover {
+    color: #fff;
+}
+
+.services__btn a:hover:after {
     width: 100%;
 }
 
