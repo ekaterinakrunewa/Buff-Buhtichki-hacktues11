@@ -50,11 +50,23 @@ function createOfferCard(offer) {
     
     description.textContent = offer.description;
     
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.gap = '10px';
+    
+    const contactBtn = document.createElement('a');
+    contactBtn.href = `messages.html?area=${encodeURIComponent(offer.help_type === 'offer' ? offer.area_type : offer.help_type)}&type=${encodeURIComponent(offer.help_type)}&credits=${encodeURIComponent(offer.help_type === 'offer' ? offer.credit_amount : offer.credit_budget)}`;
+    contactBtn.className = 'contact__btn';
+    contactBtn.textContent = 'Contact';
+    
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete__btn';
     deleteBtn.textContent = 'Delete';
     deleteBtn.onclick = () => deleteOffer(offer.id);
-    card.querySelector('.offer__card').appendChild(deleteBtn);
+    
+    buttonContainer.appendChild(contactBtn);
+    buttonContainer.appendChild(deleteBtn);
+    card.querySelector('.offer__card').appendChild(buttonContainer);
     
     return card;
 }
@@ -167,3 +179,10 @@ menu.addEventListener('click', () => {
     menu.classList.toggle('is-active');
     menuLinks.classList.toggle('active');
 });
+
+const contactBtn = document.createElement('a');
+const areaName = offer.help_type === 'offer' ? offer.area_type : offer.help_type;
+contactBtn.href = `messages.html?area=${encodeURIComponent(areaName)}&type=${encodeURIComponent(offer.help_type)}&credits=${encodeURIComponent(offer.help_type === 'offer' ? offer.credit_amount : offer.credit_budget)}`;
+contactBtn.className = 'contact__btn';
+contactBtn.textContent = 'Contact';
+card.querySelector('.offer__card').appendChild(contactBtn);

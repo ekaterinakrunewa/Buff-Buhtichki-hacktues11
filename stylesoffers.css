@@ -220,6 +220,8 @@
     padding: 1.5rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 .offer__card:hover {
@@ -278,19 +280,49 @@
     margin-bottom: 1rem;
 }
 
-.contact__btn {
-    width: 100%;
-    padding: 0.8rem;
+a.contact__btn {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    right: 20px;
     background: #2f4156;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    width: calc(100% - 40px);
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-.contact__btn:hover {
+a.contact__btn:hover {
     background: #3d5269;
+}
+
+button.delete__btn {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: calc(100% - 40px);
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button.delete__btn:hover {
+    background: #cc0000;
 }
 
 .no__results {
@@ -433,21 +465,6 @@
     .filters {
         padding: 1rem;
     }
-}
-
-.delete__btn {
-    background: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    width: 100%;
-}
-
-.delete__btn:hover {
-    background: #cc0000;
 }
 
 .clear__all__btn {
