@@ -1,1 +1,3 @@
-# Buff-Buhtichki-hacktues11
+# TimeLink
+
+TimeLink is a web platform that allows users to exchange time instead of money for services. Users can offer skills such as tutoring, repairs, or shopping and earn Time Credits, which they can then use to request services from others or redeem for discounts. The project is built using HTML, CSS, and JavaScript for the frontend, with a Node.js backend and MySQL for data storage. The system supports user authentication, Time Credit tracking, service listings, and a search feature to match users with the right services. Data is stored securely, and transactions are updated in real time. The project is actively being developed, and contributions are welcome through issues or pull requests.
