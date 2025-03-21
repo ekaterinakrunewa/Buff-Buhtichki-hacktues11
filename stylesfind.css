@@ -42,6 +42,13 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#navbar__logo:hover {
+    background-image: linear-gradient(to top, #1d1758 0%, #31729e 100%); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slightly enlarge the logo */
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .navbar__menu {
@@ -56,7 +63,7 @@
 }
 
 .navbar__links {
-    color: #2f4156;
+    color: #567c8d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,17 +91,17 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: #2f4156;
+    background: #567c8d;
     color: #fff;
 }
 
 .button:hover {
-    background: #3d5269;
+    background: #2f4156;
     transition: all 0.3s ease;
 }
 
 .navbar__links:hover {
-    color: #3d5269;
+    color: #2f4156;
     transition: all 0.3s ease;
 }
 
