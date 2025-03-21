@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages | TimeLink</title>
+    <link rel="stylesheet" href="stylesmessages.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">TimeLink</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/find.html" class="navbar__links">Find</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/offers.html" class="navbar__links">Offers</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/signup.html" class="button">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="messages__container">
+        <div class="conversations__list">
+            <div class="conversations__header">
+                <h2>Messages</h2>
+            </div>
+            <div class="search__bar">
+                <input type="text" placeholder="Search conversations...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="conversations" id="conversationsList">
+                <div class="conversation active">
+                    <div class="conversation__avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="conversation__info">
+                        <h3>User</h3>
+                        <p>Active now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat__container">
+            <div class="chat__header">
+                <div class="chat__user">
+                    <div class="user__avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user__info">
+                        <h3>User</h3>
+                        <p id="chatSubtitle"></p>
+                    </div>
+                </div>
+                <div class="chat__actions">
+                    <button class="action__btn">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                    <button class="action__btn">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="action__btn">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat__messages" id="chatMessages">
+            </div>
+
+            <div class="chat__input">
+                <button class="attach__btn">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <div class="input__container">
+                    <input type="text" placeholder="Type a message..." id="messageInput">
+                    <button class="emoji__btn">
+                        <i class="far fa-smile"></i>
+                    </button>
+                </div>
+                <button class="send__btn" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="appmessages.js"></script>
+</body>
+</html>
