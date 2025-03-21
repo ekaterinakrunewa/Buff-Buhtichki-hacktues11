@@ -622,3 +622,13 @@
 .main__img--container{
     margin-left: 100px;
 }
+
+#profile__img { 
+    float: left;
+    margin-left: 125px;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}

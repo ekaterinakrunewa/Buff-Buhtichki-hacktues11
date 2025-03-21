@@ -253,3 +253,13 @@ body {
         display: block;
     }
 }
+
+
+.navbar__btnlogout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+    background: #ff0000;
+}
