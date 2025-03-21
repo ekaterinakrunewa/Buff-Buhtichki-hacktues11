@@ -20,7 +20,13 @@
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a href="/find.html" class="navbar__links">Offer/Get Help</a>
+                    <a href="/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/find.html" class="navbar__links">Find</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/offers.html" class="navbar__links">Offers</a>
                 </li>
                 <li class="navbar__btn">
                     <a href="/signup.html" class="button">Sign up</a>
@@ -37,7 +43,7 @@
                 <p>Help others or get help from the community</p>
             </div>
             <div class="main__img--container">
-                <img src="HelpSupport.png" alt="HelpSupport" id="main__img" width="600" height="600">
+                <img src="images/pic1.svg" alt="pic" id="main__img">
             </div>
         </div>
     </div>
@@ -59,7 +65,7 @@
                 </div>
             </div>
 
-            <form class="help__form">
+            <form class="help__form" id="helpForm">
                 <div class="form__step active" id="step1">
                     <h2>What would you like to do?</h2>
                     <div class="choice__cards">
@@ -90,31 +96,31 @@
                         <h2>Help Details</h2>
                         <div class="credit__range">
                             <label>Payment per hour (credits)</label>
-                            <input type="range" min="50" max="500" step="10" id="credit_amount">
+                            <input type="range" min="50" max="500" step="10" id="credit_amount" name="credit_amount" value="250">
                             <div class="range__value">250 credits/hour</div>
                         </div>
                         <div class="date__selection">
                             <div class="date__input">
                                 <label>Start Date</label>
-                                <input type="date" id="date_start">
+                                <input type="date" id="date_start" name="date_start">
                             </div>
                             <div class="date__input">
                                 <label>End Date</label>
-                                <input type="date" id="date_end">
+                                <input type="date" id="date_end" name="date_end">
                             </div>
                         </div>
                         <div class="time__selection">
                             <div class="time__input">
                                 <label>Available From</label>
-                                <input type="time" id="time_from">
+                                <input type="time" id="time_from" name="time_from">
                             </div>
                             <div class="time__input">
                                 <label>Available Until</label>
-                                <input type="time" id="time_to">
+                                <input type="time" id="time_to" name="time_to">
                             </div>
                         </div>
                         <div class="area__selection">
-                            <select name="area" id="area_type" class="styled__select">
+                            <select name="area_type" id="area_type" class="styled__select">
                                 <option value="">Select Area</option>
                                 <option value="housework">Housework</option>
                                 <option value="gardening">Gardening</option>
@@ -131,31 +137,31 @@
                         <h2>Help Request Details</h2>
                         <div class="credit__range">
                             <label>Budget per hour (credits)</label>
-                            <input type="range" min="50" max="500" step="10" id="credit_budget">
+                            <input type="range" min="50" max="500" step="10" id="credit_budget" name="credit_budget">
                             <div class="range__value">250 credits/hour</div>
                         </div>
                         <div class="date__selection">
                             <div class="date__input">
                                 <label>Need Help From</label>
-                                <input type="date" id="need_date_start">
+                                <input type="date" id="need_date_start" name="need_date_start">
                             </div>
                             <div class="date__input">
                                 <label>Until</label>
-                                <input type="date" id="need_date_end">
+                                <input type="date" id="need_date_end" name="need_date_end">
                             </div>
                         </div>
                         <div class="time__selection">
                             <div class="time__input">
                                 <label>Preferred Time From</label>
-                                <input type="time" id="need_time_from">
+                                <input type="time" id="need_time_from" name="need_time_from">
                             </div>
                             <div class="time__input">
                                 <label>Until</label>
-                                <input type="time" id="need_time_to">
+                                <input type="time" id="need_time_to" name="need_time_to">
                             </div>
                         </div>
                         <div class="area__selection">
-                            <select name="help_needed" id="help_type" class="styled__select">
+                            <select name="help_type" id="help_type" class="styled__select">
                                 <option value="">Type of Help Needed</option>
                                 <option value="housework">Housework</option>
                                 <option value="gardening">Gardening</option>

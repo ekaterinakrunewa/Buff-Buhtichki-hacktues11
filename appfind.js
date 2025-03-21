@@ -15,6 +15,10 @@ const needOptions = document.querySelector('.need__options');
 
 let currentStep = 0;
 
+function generateUniqueId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
 creditRange.addEventListener('input', () => {
     offerRangeValue.textContent = `${creditRange.value} credits/hour`;
 });
@@ -101,6 +105,48 @@ function validateDates(startDate, endDate) {
     return start <= end;
 }
 
+function saveFormData() {
+    const helpType = document.querySelector('input[name="help_type"]:checked').value;
+    
+    const entry = {
+        id: generateUniqueId(),
+        timestamp: new Date().toISOString(),
+        help_type: helpType
+    };
+
+    if (helpType === 'offer') {
+        entry.credit_amount = document.querySelector('#credit_amount').value;
+        entry.date_start = document.querySelector('#date_start').value;
+        entry.date_end = document.querySelector('#date_end').value;
+        entry.time_from = document.querySelector('#time_from').value;
+        entry.time_to = document.querySelector('#time_to').value;
+        entry.area_type = document.querySelector('#area_type').value;
+    } else {
+        entry.credit_budget = document.querySelector('#credit_budget').value;
+        entry.need_date_start = document.querySelector('#need_date_start').value;
+        entry.need_date_end = document.querySelector('#need_date_end').value;
+        entry.need_time_from = document.querySelector('#need_time_from').value;
+        entry.need_time_to = document.querySelector('#need_time_to').value;
+        entry.help_type = document.querySelector('#help_type').value;
+    }
+
+    entry.description = document.querySelector('#description').value;
+
+    let existingData = [];
+    try {
+        existingData = JSON.parse(localStorage.getItem('helpRequests')) || [];
+    } catch (e) {
+        existingData = [];
+    }
+
+    if (!Array.isArray(existingData)) {
+        existingData = [];
+    }
+
+    existingData.push(entry);
+    localStorage.setItem('helpRequests', JSON.stringify(existingData));
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateStep(currentStep)) {
@@ -117,7 +163,9 @@ form.addEventListener('submit', (e) => {
             return;
         }
 
+        saveFormData();
         alert('Form submitted successfully!');
+        window.location.href = 'offers.html';
     }
 });
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Offers - LifeLink</title>
+    <link rel="stylesheet" href="stylesoffers.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">LifeLink</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/find.html" class="navbar__links">Find</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/offers.html" class="navbar__links">Offers</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/signup.html" class="button">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>AVAILABLE OFFERS</h1>
+                <h2>FIND YOUR MATCH</h2>
+                <p>Browse through available offers and requests</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="offers__container">
+        <div class="filters">
+            <div class="filter__group">
+                <select id="typeFilter" class="filter__select">
+                    <option value="all">All Types</option>
+                    <option value="offer">Offers</option>
+                    <option value="receive">Requests</option>
+                </select>
+                <select id="areaFilter" class="filter__select">
+                    <option value="all">All Areas</option>
+                    <option value="housework">Housework</option>
+                    <option value="gardening">Gardening</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="transport">Transport</option>
+                    <option value="companionship">Companionship</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="education">Education</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="credit__filter">
+                    <label>Max Credits/Hour:</label>
+                    <input type="range" id="creditFilter" min="50" max="500" step="10" value="500">
+                    <span id="creditValue">500</span>
+                </div>
+            </div>
+            <button id="clearFilters" class="clear__btn">Clear Filters</button>
+        </div>
+
+        <div class="offers__grid" id="offersGrid">
+        </div>
+
+        <template id="offerTemplate">
+            <div class="offer__card">
+                <div class="offer__type">
+                    <i class="fas"></i>
+                    <span></span>
+                </div>
+                <div class="offer__details">
+                    <h3 class="offer__area"></h3>
+                    <div class="offer__time">
+                        <div class="date__range">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="time__range">
+                            <i class="fas fa-clock"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="offer__credits">
+                        <i class="fas fa-coins"></i>
+                        <span></span>
+                    </div>
+                    <p class="offer__description"></p>
+                </div>
+                <button class="contact__btn">Contact</button>
+            </div>
+        </template>
+
+        <div class="no__results" id="noResults">
+            <i class="fas fa-search"></i>
+            <p>No matching offers found</p>
+        </div>
+    </div>
+
+    <script src="appoffers.js"></script>
+</body>
+</html>
