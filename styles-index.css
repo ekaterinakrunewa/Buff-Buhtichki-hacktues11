@@ -232,6 +232,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+    font-weight: bold;
 }
 
 .main__content h2{
@@ -243,6 +244,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+    font-weight: bold;
 }
 
 .main__content p{
@@ -250,6 +252,7 @@
     font-size: 2rem;
     font-weight: 700;
     color: #79bad8;
+    font-weight: bold;
 }
 
 .main__btn{
@@ -401,16 +404,33 @@
     rgba(17,17,17,0.6) 100%), url('/images/pic4.jpg.jpg');
 }
 
-.services h2{
-    position: absolute;
-    top: 350px;
-    left: 30px;
+.main__content h1 {
+    font-size: 4rem;
+    background-color: #2f4156;
+    background-image: linear-gradient(to top, #2f4156 0%, #3d5269 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
 }
 
-.services__card p{
-    position: absolute;
-    top: 400px;
-    left: 30px;
+.main__content h2 {
+    font-size: 4rem;
+    background-color: #2f4156;
+    background-image: linear-gradient(to top, #3d5269 0%, #2f4156 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.main__content p {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2f4156;
 }
 
 .services__card button{
