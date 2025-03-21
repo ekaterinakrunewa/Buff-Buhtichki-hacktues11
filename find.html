@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Help - LifeLink</title>
+    <link rel="stylesheet" href="stylesfind.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">LifeLink</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/donate.html" class="navbar__links">Donate</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/find.html" class="navbar__links">Find</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/signup.html" class="button">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>LIFELINK HELP</h1>
+                <h2>START YOUR JOURNEY</h2>
+                <p>Help others or get help from the community</p>
+            </div>
+            <div class="main__img--container">
+                <img src="images/pic1.svg" alt="pic" id="main__img">
+            </div>
+        </div>
+    </div>
+
+    <div class="form__container">
+        <div class="form__card">
+            <div class="progress__bar">
+                <div class="step active">
+                    <i class="fas fa-clipboard-list"></i>
+                    <p>Type</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-handshake"></i>
+                    <p>Details</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-paper-plane"></i>
+                    <p>Submit</p>
+                </div>
+            </div>
+
+            <form class="help__form">
+                <div class="form__step active" id="step1">
+                    <h2>What would you like to do?</h2>
+                    <div class="choice__cards">
+                        <div class="choice__card" data-type="offer">
+                            <div class="card__icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3>Offer Help</h3>
+                            <p>Support others in need</p>
+                            <input type="radio" name="help_type" value="offer">
+                        </div>
+                        <div class="choice__card" data-type="receive">
+                            <div class="card__icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Get Help</h3>
+                            <p>Request assistance</p>
+                            <input type="radio" name="help_type" value="receive">
+                        </div>
+                    </div>
+                    <div class="form__navigation">
+                        <button type="button" class="next__btn" disabled>Continue</button>
+                    </div>
+                </div>
+
+                <div class="form__step" id="step2">
+                    <div class="offer__options">
+                        <h2>Help Details</h2>
+                        <div class="credit__range">
+                            <label>Credits Offered/Needed</label>
+                            <input type="range" min="10" max="1000" step="10" id="credit_amount">
+                            <div class="range__value">500 credits</div>
+                        </div>
+                        <div class="area__selection">
+                            <select name="area" id="area_type" class="styled__select">
+                                <option value="">Select Area</option>
+                                <option value="housework">Housework</option>
+                                <option value="gardening">Gardening</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="transport">Transport</option>
+                                <option value="companionship">Companionship</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="education">Education</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="time__selection">
+                            <div class="time__input">
+                                <label>Available From</label>
+                                <input type="time" id="time_from">
+                            </div>
+                            <div class="time__input">
+                                <label>Available Until</label>
+                                <input type="time" id="time_to">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__navigation">
+                        <button type="button" class="prev__btn">Back</button>
+                        <button type="button" class="next__btn">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form__step" id="step3">
+                    <h2>Additional Details</h2>
+                    <div class="description__container">
+                        <textarea 
+                            name="description" 
+                            id="description" 
+                            maxlength="600" 
+                            placeholder="Describe the help you're offering or requesting (max 600 characters)"></textarea>
+                        <div class="char__count">0/600</div>
+                    </div>
+
+                    <div class="urgency__level">
+                        <h3>Urgency Level</h3>
+                        <div class="urgency__options">
+                            <input type="radio" name="urgency" id="normal" value="normal">
+                            <label for="normal">Normal</label>
+                            <input type="radio" name="urgency" id="urgent" value="urgent">
+                            <label for="urgent">Urgent</label>
+                            <input type="radio" name="urgency" id="critical" value="critical">
+                            <label for="critical">Critical</label>
+                        </div>
+                    </div>
+
+                    <div class="form__navigation">
+                        <button type="button" class="prev__btn">Back</button>
+                        <button type="submit" class="submit__btn">Submit Request</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="appfind.js"></script>
+</body>
+</html>
