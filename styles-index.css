@@ -632,3 +632,69 @@
     border-radius: 100%;
     overflow: hidden;
 }
+
+
+
+.review__comment{
+    background: #f5efeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 15vh;
+}
+
+.review__comment h1{
+    background-color: #292c89;
+    background-image: linear-gradient(to right, #f1c2d5  0%, #ecaac4  0%, #e988af  21%, #dc6997  52%, #fe5196  78%, #ec1a6e  100%);
+    background-size: 100%;
+    margin-bottom: 5rem;
+    font-size: 2.5rem;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#review__btn{
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #fe5196 0%, #c8d9e6 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s ease;
+    outline: none;
+}
+
+#review__btn a {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+}
+
+#review__btn:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-image: linear-gradient(to top, #2f4156 0%, #567c8d 100%);
+    transition: all 0.35s ease;
+    border-radius: 4px;
+}
+
+#review__btn:hover {
+    color: #fff;
+}
+
+#review__btn:hover:after {
+    width: 100%;
+}
+
+
+

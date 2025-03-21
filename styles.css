@@ -263,3 +263,74 @@ body {
     width: 100%;
     background: #ff0000;
 }
+
+/* Review Page Container */
+.review__comment {
+    background: #f5efeb; /* Matches the site's beige background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    width: 350px; /* Match the signup form width */
+    margin: 50px auto; /* Center the container */
+    color: #2f4156; /* Matches the site's text color */
+}
+
+/* Review Header */
+.review__comment h1 {
+    font-size: 1.8rem; /* Match the signup form header size */
+    margin-bottom: 20px; /* Add spacing below the header */
+    background-image: linear-gradient(to right, #31729e, #567c8d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Review Button */
+#review__btn {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #567c8d, #2f4156);
+    padding: 15px 20px; /* Match the signup button padding */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin-top: 20px; /* Add spacing above the button */
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 100%; /* Make the button span the full width */
+    text-align: center;
+}
+
+#review__btn a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#review__btn:hover {
+    background-image: linear-gradient(to top, #2f4156, #567c8d);
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+#review__btn:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-image: linear-gradient(to top, #2f4156 0%, #567c8d 100%);
+    transition: all 0.35s ease;
+    border-radius: 5px;
+}
+
+#review__btn:hover:after {
+    width: 100%;
+}
+
