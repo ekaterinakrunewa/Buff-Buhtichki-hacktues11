@@ -77,65 +77,66 @@
     <script src="animations.js"></script>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Reset messages
-            const errorElement = document.getElementById('errorMessage');
-            const successElement = document.getElementById('successMessage');
-            errorElement.classList.add('hidden');
-            successElement.classList.add('hidden');
+       document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
 
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
+  // Reset messages
+  const errorElement = document.getElementById('errorMessage');
+  const successElement = document.getElementById('successMessage');
+  errorElement.classList.add('hidden');
+  successElement.classList.add('hidden');
 
-            // Form validation
-            if (data.password !== data.confirm_password) {
-                errorElement.textContent = 'Passwords do not match.';
-                errorElement.classList.remove('hidden');
-                return;
-            }
-            
-            if (data.password.length < 8) {
-                errorElement.textContent = 'Password must be at least 8 characters.';
-                errorElement.classList.remove('hidden');
-                return;
-            }
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
 
-            // Remove confirm_password before sending to API
-            delete data.confirm_password;
-            
-            try {
-                const response = await fetch('/api/auth/signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include',
-                    body: JSON.stringify(data),
-                });
+  // Form validation
+  if (data.password !== data.confirm_password) {
+    errorElement.textContent = 'Passwords do not match.';
+    errorElement.classList.remove('hidden');
+    return;
+  }
 
-                const result = await response.json();
+  if (data.password.length < 8) {
+    errorElement.textContent = 'Password must be at least 8 characters.';
+    errorElement.classList.remove('hidden');
+    return;
+  }
 
-                if (response.ok) {
-                    successElement.textContent = 'Account created successfully! Redirecting to login page...';
-                    successElement.classList.remove('hidden');
-                    
-                    // Reset form
-                    document.getElementById('signupForm').reset();
-                    
-                    // Redirect after a short delay
-                    setTimeout(() => {
-                        window.location.href = '/login.html';
-                    }, 2000);
-                } else {
-                    errorElement.textContent = result.error || 'Signup failed. Please try again.';
-                    errorElement.classList.remove('hidden');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                errorElement.textContent = 'A network error occurred. Please try again.';
-                errorElement.classList.remove('hidden');
-            }
-        });
+  // Remove confirm_password before sending to API
+  delete data.confirm_password;
+
+  try {
+    const response = await fetch('http://127.0.0.1:5500/api/auth/signup', { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      successElement.textContent = 'Account created successfully! Redirecting to login page...';
+      successElement.classList.remove('hidden');
+
+      // Reset form
+      document.getElementById('signupForm').reset();
+
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.href = '/login.html';
+      }, 2000);
+    } else {
+      errorElement.textContent = result.error || 'Signup failed. Please try again.';
+      errorElement.classList.remove('hidden');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    errorElement.textContent = 'A network error occurred. Please try again.';
+    errorElement.classList.remove('hidden');
+  }
+});
     </script>
 </body>
 </html>
