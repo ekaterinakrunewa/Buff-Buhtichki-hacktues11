@@ -283,7 +283,7 @@
 }
 
 .value {
-    font-size: 50px;
+    font-size: 40px;
     display: flex;
     flex-direction: column;
 }
@@ -292,7 +292,7 @@
     width: 60px;
     height: 60px;
     position: relative;
-    left: 86px;
+    left: 19%;
     top: -17px;
 }
 
@@ -315,7 +315,7 @@
     width: 60px;
     height: 60px;
     position: relative;
-    left: 69px;
+    left: 12%;
     top: -16px;
 }
 
