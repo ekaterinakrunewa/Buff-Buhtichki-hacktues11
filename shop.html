@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Shop</title>
+        <link rel="stylesheet" href="styles-dash.css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar__container">
+                <a href="/index.html" id="navbar__logo">TimeLink</a>
+                <ul class="navbar__menu">
+                    <li class="navbar__item">
+                        <a href="/dashboard.html" class="navbar__links">My Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main--content">
+            <h2>Shop</h2>
+            <div class="shop--container">
+                <div class="offer">
+                    <h3>Gardening Tools</h3>
+                    <p>Price: 50 Credits</p>
+                    <button onclick="buyItem('Gardening Tools', 50)">Buy</button>
+                </div>
+                <div class="offer">
+                    <h3>Shopping Assistance</h3>
+                    <p>Price: 100 Credits</p>
+                    <button onclick="buyItem('Shopping Assistance', 100)">Buy</button>
+                </div>
+                <div class="shop-item">
+                    <h3>Food</h3>
+                    <p>Price: 50 Credits</p>
+                    <button onclick="purchaseItem('Food', 50)">Buy</button>
+                </div>
+                <div class="shop-item">
+                    <h3>Clothes</h3>
+                    <p>Price: 100 Credits</p>
+                    <button onclick="purchaseItem('Clothes', 100)">Buy</button>
+                </div>
+            </div>
+        </div>
+        <script src="dashboard.js"></script>
+        <script>
+            function purchaseItem(category, price) {
+                const data = JSON.parse(localStorage.getItem('dashboardData')) || { spent: 0, earned: 0, transactions: [] };
+
+                // Update credits and transactions
+                data.spent += price;
+                data.transactions.push({
+                    date: new Date().toLocaleDateString(),
+                    type: 'Expense',
+                    description: `Purchased ${category}`,
+                    amount: price,
+                    category: category
+                });
+
+                // Save updated data to localStorage
+                localStorage.setItem('dashboardData', JSON.stringify(data));
+
+                alert(`You purchased ${category} for ${price} Credits!`);
+            }
+        </script>
+    </body>
+</html>
