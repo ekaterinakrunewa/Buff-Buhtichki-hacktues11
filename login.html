@@ -70,7 +70,7 @@
             const data = Object.fromEntries(formData);
 
             try {
-                const response = await fetch('/api/auth/login', {
+                const response = await fetch('http://127.0.0.1:5500/api/auth/signup', {
                     method: 'POST',
                     headers: { 
                         'Content-Type': 'application/json',

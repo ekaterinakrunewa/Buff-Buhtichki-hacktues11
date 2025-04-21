@@ -14,19 +14,18 @@ connectDB();
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:5500', 
-  credentials: true,
+    origin: 'http://localhost:5500',
+    credentials: true,
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
 
 app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
-  res.send('TimeLink API is running');
+    res.send('TimeLink API is running');
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
