@@ -15,7 +15,7 @@ function setupLogout() {
                     // Clear local storage
                     localStorage.removeItem('user');
                     
-                    // Redirect to login page
+                
                     window.location.href = '/login.html';
                 } else {
                     console.error('Logout failed');
@@ -29,5 +29,4 @@ function setupLogout() {
     });
 }
 
-// Initialize logout functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', setupLogout);
