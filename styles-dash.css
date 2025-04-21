@@ -369,3 +369,33 @@ tfoot td {
     padding: 15px;
 }
 
+.shop--container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.offer {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.offer h3 {
+    margin-bottom: 10px;
+}
+
+.offer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.offer button:hover {
+    background-color: #0056b3;
+}
+

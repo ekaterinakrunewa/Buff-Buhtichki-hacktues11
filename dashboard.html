@@ -20,6 +20,9 @@
                     <li class="navbar__item">
                         <a href="/find.html" class="navbar__links">Offer/Get Help</a>
                     </li>
+                    <li class="navbar__item">
+                        <a href="/shop.html" class="navbar__links">Shop</a>
+                    </li>
                     <li class="navbar__btn">
                         <a href="/signup.html" class="button">Sign Up</a>
                     </li>
@@ -48,7 +51,7 @@
                                     Credits spent:
                                 </span>
                                 <img id="credit" src=ethereum.png alt="" />
-                                <span class="value">
+                                <span id="credits-spent" class="value">
                                     200 Credits
                                 </span>
                             </div>
@@ -62,7 +65,7 @@
                                     Credits earned:
                                 </span>
                                 <img id="credit2" src=ethereum.png alt="" />
-                                <span class="value">
+                                <span id="credits-earned" class="value">
                                     300 Credits
                                 </span>
                             </div>
@@ -84,30 +87,42 @@
                                 <th>Category</th>
                             </tr>
                             </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            21-03-2025
-                                        </td>
-                                        <td>Expense</td>
-                                        <td>Needed Help</td>
-                                        <td>200 Credits</td>
-                                        <td>Gardening</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            22-03-2025
-                                        </td>
-                                        <td>Income</td>
-                                        <td>Offered Help</td>
-                                        <td>300 Credits</td>
-                                        <td>Shopping</td>
-                                    </tr>
+                                <tbody id="transaction-table">
+                                    <!-- Transactions will be dynamically added here -->
                                 </tbody>
                      </table>
                 </div>
             </div>
         </div>
         <script src="animations.js"></script>
+        <script src="dashboard.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const creditsSpent = document.getElementById('credits-spent');
+                const creditsEarned = document.getElementById('credits-earned');
+                const transactionTable = document.getElementById('transaction-table');
+
+                // Load data from localStorage
+                const data = JSON.parse(localStorage.getItem('dashboardData')) || { spent: 0, earned: 0, transactions: [] };
+
+                // Update credits
+                creditsSpent.textContent = `${data.spent} Credits`;
+                creditsEarned.textContent = `${data.earned} Credits`;
+
+                // Populate transaction table
+                transactionTable.innerHTML = ''; // Clear existing rows
+                data.transactions.forEach(transaction => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${transaction.date}</td>
+                        <td>${transaction.type}</td>
+                        <td>${transaction.description}</td>
+                        <td>${transaction.amount} Credits</td>
+                        <td>${transaction.category}</td>
+                    `;
+                    transactionTable.appendChild(row);
+                });
+            });
+        </script>
     </body>
 </html>
