@@ -98,28 +98,22 @@
     </div>
 
     <script>
-        // Example: Array of offers dynamically provided (replace this with actual dynamic data)
-        const offers = [
-            { description: 'Help with gardening', credits: 280 },
-            { description: 'Assist with shopping', credits: 150 },
-            { description: 'Dog walking', credits: 50 }
-        ];
+        // Example: Specific offer dynamically provided (replace this with actual dynamic data)
+        const specificOffer = { description: 'Help with gardening', credits: 280 };
 
         const chatMessages = document.getElementById('chatMessages');
 
-        // Dynamically display the offers
-        offers.forEach(offer => {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message');
-            messageDiv.innerHTML = `
-                <div class="message-content">
-                    <p>Task: ${offer.description}</p>
-                    <p>Credits: ${offer.credits}</p>
-                </div>
-                <button class="accept-btn" onclick="acceptTask('${offer.description}', ${offer.credits})">Accept</button>
-            `;
-            chatMessages.appendChild(messageDiv);
-        });
+        // Dynamically display the specific offer
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message');
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <p>Task: ${specificOffer.description}</p>
+                <p>Credits: ${specificOffer.credits}</p>
+            </div>
+            <button class="accept-btn" onclick="acceptTask('${specificOffer.description}', ${specificOffer.credits})">Accept</button>
+        `;
+        chatMessages.appendChild(messageDiv);
 
         function acceptTask(description, credits) {
             const data = JSON.parse(localStorage.getItem('dashboardData')) || { spent: 0, earned: 0, transactions: [] };
