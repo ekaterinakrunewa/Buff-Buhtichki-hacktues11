@@ -3,7 +3,9 @@ body {
     padding-top: 100px;
     background-color: #f5efeb;
     color: #2f4156;
+    font-weight: bold;
 }
+  
 
 .body2{
     margin-left: 200px;
@@ -119,7 +121,7 @@ p {
 }
 
 .navbar__links{
-    color: #ffffff;
+    color: #567c8d;
     display: flex;
     align-items: center;
     justify-content: center;

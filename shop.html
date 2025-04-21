@@ -27,27 +27,35 @@
             </div>
         </nav>
         <div class="main--content">
-            <h2>Shop</h2>
+            <h2 class="shop-title">Shop</h2>
             <div class="shop--container">
+                <!-- Gardening Tools -->
                 <div class="offer">
                     <h3>Gardening Tools</h3>
-                    <p>Price: 50 Credits</p>
-                    <button onclick="buyItem('Gardening Tools', 50)">Buy</button>
+                    <p>Price: <span class="price">50 Credits</span></p>
+                    <p class="sponsor">Sponsored by: GreenThumb Co.</p>
+                    <button class="shop-btn" onclick="purchaseItem('Gardening Tools', 50)">Buy</button>
                 </div>
+                <!-- Shopping Assistance -->
                 <div class="offer">
                     <h3>Shopping Assistance</h3>
-                    <p>Price: 100 Credits</p>
-                    <button onclick="buyItem('Shopping Assistance', 100)">Buy</button>
+                    <p>Price: <span class="price">100 Credits</span></p>
+                    <p class="sponsor">Sponsored by: ShopEase Inc.</p>
+                    <button class="shop-btn" onclick="purchaseItem('Shopping Assistance', 100)">Buy</button>
                 </div>
-                <div class="shop-item">
+                <!-- Food -->
+                <div class="offer">
                     <h3>Food</h3>
-                    <p>Price: 50 Credits</p>
-                    <button onclick="purchaseItem('Food', 50)">Buy</button>
+                    <p>Price: <span class="price">50 Credits</span></p>
+                    <p class="sponsor">Sponsored by: FreshBites Ltd.</p>
+                    <button class="shop-btn" onclick="purchaseItem('Food', 50)">Buy</button>
                 </div>
-                <div class="shop-item">
+                <!-- Clothes -->
+                <div class="offer">
                     <h3>Clothes</h3>
-                    <p>Price: 100 Credits</p>
-                    <button onclick="purchaseItem('Clothes', 100)">Buy</button>
+                    <p>Price: <span class="price">100 Credits</span></p>
+                    <p class="sponsor">Sponsored by: StyleHub</p>
+                    <button class="shop-btn" onclick="purchaseItem('Clothes', 100)">Buy</button>
                 </div>
             </div>
         </div>
