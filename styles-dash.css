@@ -1,11 +1,15 @@
 * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    box-sizing: border-box;
 }
 
-.navbar {
-    background: #C8D9E6;
+
+
+.navbar{
+    background: #C8D9e6;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -16,7 +20,7 @@
     z-index: 999;
 }
 
-.navbar__container {
+.navbar__container{
     display: flex;
     justify-content: space-between;
     height: 80px;
@@ -40,21 +44,32 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.navbar__menu {
+#navbar__logo:hover {
+    background-image: linear-gradient(to top, #1d1758 0%, #31729e 100%); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slightly enlarge the logo */
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.fa-gem{
+    margin-right: 0.5rem;
+}
+
+.navbar__menu{
     display: flex;
     align-items: center;
     list-style: none;
     text-align: center;
 }
 
-.navbar__item {
+.navbar__item{
     height: 80px;
 }
 
-.navbar__links {
-    color: #2f4156;
+.navbar__links{
+    color: #567c8d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +78,7 @@
     height: 100%;
 }
 
-.navbar__btn {
+.navbar__btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,7 +86,7 @@
     width: 100%;
 }
 
-.button {
+.button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,12 +101,12 @@
     color: #fff;
 }
 
-.button:hover {
+.button:hover{
     background: #2f4156;
     transition: all 0.3s ease;
 }
 
-.navbar__links:hover {
+.navbar__links:hover{
     color: #2f4156;
     transition: all 0.3s ease;
 }
@@ -191,6 +206,8 @@
         transform: translateY(-8px) rotate(-45deg);
      }
 }
+
+
 
 
 .main--content {
@@ -398,4 +415,3 @@ tfoot td {
 .offer button:hover {
     background-color: #0056b3;
 }
-
