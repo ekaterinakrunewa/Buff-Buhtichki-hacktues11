@@ -7,14 +7,14 @@ const authRoutes = require('./routes/auth');
 const { connectDB } = require('./config/db');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 
 connectDB();
 
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: 'http://localhost:5500', 
   credentials: true,
 }));
 
