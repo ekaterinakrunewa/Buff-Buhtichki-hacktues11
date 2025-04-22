@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login | TimeLink{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <div class="max-w-md mx-auto">
+        <h1 class="text-2xl font-bold text-center mb-6">Welcome Back to TimeLink</h1>
+
+        <form id="loginForm" class="rounded-md border border-hex padding-l shadow-2xl background-beige">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+                {{ form.username }}
+            </div> 
+            <div class="mb-6">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                {{ form.password }}
+            </div>
+            <div id="errorMessage" class="{% if form.errors %}block{% else %}hidden{% endif %} p-4 mb-6 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                {% if form.errors %}
+                    Invalid email or password.
+                {% endif %}
+            </div>
+            <div id="successMessage" class="hidden p-4 mb-6 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert"></div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="background: #2f4156;">Log In</button>
+            <p class="mt-4 text-sm text-gray-600">Don't have an account? <a href="/signup.html" class="text-blue-600 hover:underline" style="color: #2f4156;;">Sign up</a></p>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const errorElement = document.getElementById('errorMessage');
+        const successElement = document.getElementById('successMessage');
+        errorElement.classList.add('hidden');
+        successElement.classList.add('hidden');
+
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+
+        // from data to API
+        const apiData = {
+            email: data.username,  
+            password: data.password
+        };
+
+        try {
+            const response = await fetch('/api/auth/login/', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(apiData),
+            });
+
+            console.log('Response status:', response.status);
+            const result = await response.json();
+
+            if (response.ok) {
+                successElement.textContent = 'Login successful! Redirecting...';
+                successElement.classList.remove('hidden');
+                
+                // store user info in localStorage
+                localStorage.setItem('user', JSON.stringify({
+                    userId: result.userId,
+                    name: result.name
+                }));
+                
+                // redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            } else {
+                errorElement.textContent = result.error || 'Invalid email or password.';
+                errorElement.classList.remove('hidden');
+            }
+        } catch (error) {
+            console.error('Detailed error:', error);
+            errorElement.textContent = 'A network error occurred. Please try again.';
+            errorElement.classList.remove('hidden');
+        }
+    });
+</script>
+{% endblock %}

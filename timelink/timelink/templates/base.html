@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TimeLink{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="background-hex">
+
+    <!-- Navbar Section--> 
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">TimeLink</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/dashboard/" class="navbar__links">My Dashboard</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/find/" class="navbar__links">Offer/Get Help</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="navbar__btn">
+                    <a href="/api/auth/logout/" class="button">Log Out</a>
+                </li>
+                {% else %}
+                <li class="navbar__btn">
+                    {% if request.path == '/login/' %}
+                    <a href="/signup/" class="button">Sign Up</a>
+                    {% else %}
+                    <a href="/login/" class="button">Log In</a>
+                    {% endif %}
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="{% static 'animations.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
