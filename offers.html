@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Offers - TimeLink</title>
     <link rel="stylesheet" href="stylesoffers.css" />
-   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-     <!-- Navbar Section--> 
-     <nav class="navbar">
+    <!-- Navbar Section -->
+    <nav class="navbar">
         <div class="navbar__container">
             <a href="/index.html" id="navbar__logo">TimeLink</a>
             <div class="navbar__toggle" id="mobile-menu">
@@ -73,37 +72,99 @@
         </div>
 
         <div class="offers__grid" id="offersGrid">
-        </div>
-
-        <template id="offerTemplate">
-            <div class="offer__card">
-                <div class="offer__type">
-                    <i class="fas"></i>
-                    <span></span>
-                </div>
-                <div class="offer__area"></div>
-                <div class="date__range">
-                    <i class="fas fa-calendar"></i>
-                    <span></span>
-                </div>
-                <div class="time__range">
-                    <i class="fas fa-clock"></i>
-                    <span></span>
-                </div>
-                <div class="offer__credits">
-                    <i class="fas fa-coins"></i>
-                    <span></span>
-                </div>
-                <div class="offer__description"></div>
-            </div>
-        </template>
-
-        <div class="no__results" id="noResults">
-            <i class="fas fa-search"></i>
-            <p>No matching offers found</p>
+            <!-- Offers will be dynamically added here -->
         </div>
     </div>
 
-    <script src="appoffers.js"></script>
+    <script>
+        const loadOffers = () => {
+            const offers = JSON.parse(localStorage.getItem('userOffers')) || [];
+            const offersGrid = document.getElementById('offersGrid');
+            offersGrid.innerHTML = ''; // Clear existing offers
+
+            if (offers.length === 0) {
+                offersGrid.innerHTML = '<p>No offers available. Create one in Find Offers!</p>';
+                return;
+            }
+
+            offers.forEach((offer, index) => {
+                const offerDiv = document.createElement('div');
+                offerDiv.classList.add('offer');
+                offerDiv.innerHTML = `
+                    <h3>${offer.description}</h3>
+                    <p>Credits: ${offer.credits}</p>
+                    <p>Area: ${offer.area}</p>
+                    <button class="shop-btn" onclick="contactOffer(${index})">Contact</button>
+                    <button class="delete-btn" onclick="deleteOffer(${index})">Delete</button>
+                `;
+                offersGrid.appendChild(offerDiv);
+            });
+        };
+
+        const contactOffer = (index) => {
+            const offers = JSON.parse(localStorage.getItem('userOffers')) || [];
+            const selectedOffer = offers[index];
+            localStorage.setItem('specificOffer', JSON.stringify(selectedOffer));
+            window.location.href = '/messages.html';
+        };
+
+        const deleteOffer = (index) => {
+            const offers = JSON.parse(localStorage.getItem('userOffers')) || [];
+            offers.splice(index, 1); // Remove the selected offer
+            localStorage.setItem('userOffers', JSON.stringify(offers));
+            loadOffers(); // Reload the offers
+        };
+
+        const applyFilters = () => {
+            const typeFilter = document.getElementById('typeFilter').value;
+            const areaFilter = document.getElementById('areaFilter').value;
+            const maxCredits = parseInt(document.getElementById('creditFilter').value, 10);
+
+            const offers = JSON.parse(localStorage.getItem('userOffers')) || [];
+            const filteredOffers = offers.filter((offer) => {
+                const matchesType = typeFilter === 'all' || offer.helpType === typeFilter;
+                const matchesArea = areaFilter === 'all' || offer.area === areaFilter;
+                const matchesCredits = offer.credits <= maxCredits;
+                return matchesType && matchesArea && matchesCredits;
+            });
+
+            const offersGrid = document.getElementById('offersGrid');
+            offersGrid.innerHTML = ''; // Clear existing offers
+
+            if (filteredOffers.length === 0) {
+                offersGrid.innerHTML = '<p>No matching offers found.</p>';
+                return;
+            }
+
+            filteredOffers.forEach((offer, index) => {
+                const offerDiv = document.createElement('div');
+                offerDiv.classList.add('offer');
+                offerDiv.innerHTML = `
+                    <h3>${offer.description}</h3>
+                    <p>Credits: ${offer.credits}</p>
+                    <p>Area: ${offer.area}</p>
+                    <button class="shop-btn" onclick="contactOffer(${index})">Contact</button>
+                    <button class="delete-btn" onclick="deleteOffer(${index})">Delete</button>
+                `;
+                offersGrid.appendChild(offerDiv);
+            });
+        };
+
+        document.getElementById('typeFilter').addEventListener('change', applyFilters);
+        document.getElementById('areaFilter').addEventListener('change', applyFilters);
+        document.getElementById('creditFilter').addEventListener('input', () => {
+            document.getElementById('creditValue').textContent = document.getElementById('creditFilter').value;
+            applyFilters();
+        });
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            document.getElementById('typeFilter').value = 'all';
+            document.getElementById('areaFilter').value = 'all';
+            document.getElementById('creditFilter').value = 500;
+            document.getElementById('creditValue').textContent = 500;
+            loadOffers();
+        });
+
+        document.addEventListener('DOMContentLoaded', loadOffers);
+    </script>
 </body>
 </html>

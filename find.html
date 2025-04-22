@@ -200,6 +200,33 @@
         </div>
     </div>
 
+    <script>
+        const helpForm = document.getElementById('helpForm');
+
+        helpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Collect form data
+            const helpType = document.querySelector('input[name="help_type"]:checked')?.value;
+            const description = document.getElementById('description').value;
+            const credits = parseInt(document.getElementById('credit_amount').value, 10);
+            const area = document.getElementById('area_type').value;
+
+            if (!helpType || !description || !credits || !area) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // Save the offer to localStorage
+            const offers = JSON.parse(localStorage.getItem('userOffers')) || [];
+            offers.push({ helpType, description, credits, area });
+            localStorage.setItem('userOffers', JSON.stringify(offers));
+
+            alert('Offer created successfully!');
+            helpForm.reset();
+        });
+    </script>
+
     <script src="appfind.js"></script>
 </body>
 </html>
